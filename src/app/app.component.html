@@ -1,1 +1,4 @@
-app works
+<input *ngIf="!showCountdown" [(ngModel)]="inputToChild" type="number" min="1" step="1" required placeholder="Enter minutes...">
+<input type="submit" value="Submit" (click)="startCounter()">
+
+<app-counter *ngIf="showCountdown" [minutes]="inputToChild"></app-counter>

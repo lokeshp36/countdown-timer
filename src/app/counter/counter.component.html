@@ -1,0 +1,9 @@
+<p>{{HH | number : '2.0-0'}} : {{MM | number : '2.0-0'}} : {{SS | number : '2.0-0'}}</p>
+
+<progress [value]="secondsRemaining" [max]="totalSeconds"></progress>
+
+<br>
+
+<input type="button" value="pause" [disabled]="pauseButtonDisable" (click)="pauseCounter()">
+<input type="button" value="start" [disabled]="startButtonDisable" (click)="startCounter()">
+<input type="button" value="reset" [disabled]="resetButtonDisable" (click)="resetCounter()">

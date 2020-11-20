@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'countdown-timer';
+  showCountdown = false;
+  inputToChild: number = 0;
+
+  startCounter() {
+    if (this.inputToChild > 0) {
+      this.showCountdown = !this.showCountdown;
+    }
+  }
 }
