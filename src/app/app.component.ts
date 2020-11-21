@@ -11,7 +11,7 @@ export class AppComponent {
   inputToChild: number;
 
   startCounter() {
-    if (this.inputToChild >= 0.1) {
+    if (this.inputToChild >= 0.1 && this.inputToChild <= 999999) {
       this.showCountdown = !this.showCountdown;
     }
   }

@@ -2,20 +2,20 @@
 
   <div class="text-center">
     <button type="button" class="time btn mr-2">
-      Hours <br> <span class="badge badge-light">{{HH | number : '2.0-0'}}</span>
+      HH <br> <span class="badge badge-light">{{HH | number : '2.0-0'}}</span>
     </button>
     <button type="button" class="time btn mr-2">
-      Minutes <br> <span class="badge badge-light">{{MM | number : '2.0-0'}}</span>
+      MM <br> <span class="badge badge-light">{{MM | number : '2.0-0'}}</span>
     </button>
     <button type="button" class="time btn mr-2">
-      Seconds <br> <span class="badge badge-light">{{SS | number : '2.0-0'}}</span>
+      SS <br> <span class="badge badge-light">{{SS | number : '2.0-0'}}</span>
     </button>
   </div>
 
   <br>
 
   <div class="progress text-center">
-    <div class="progress-bar" [ngClass]="percentage<20 ? 'bg-danger' : 'bg-info'" role="progressbar" [style.width]="percentage + '%'">{{percentage | number : '2.0-0'}} %</div>
+    <div class="progress-bar" [ngClass]="percentage<20 ? 'bg-danger' : 'bg-info'" role="progressbar" [style.width]="percentage + '%'">{{percentage | number : '1.0-2'}} %</div>
   </div>
 
   <br>
