@@ -8,10 +8,10 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class AppComponent {
   title = 'countdown-timer';
   showCountdown = false;
-  inputToChild: number = 0;
+  inputToChild: number;
 
   startCounter() {
-    if (this.inputToChild > 0) {
+    if (this.inputToChild >= 0.1) {
       this.showCountdown = !this.showCountdown;
     }
   }

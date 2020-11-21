@@ -1,4 +1,29 @@
-<input *ngIf="!showCountdown" [(ngModel)]="inputToChild" type="number" min="1" step="1" required placeholder="Enter minutes...">
-<input type="submit" value="Submit" (click)="startCounter()">
+<div class="app mx-auto mt-4" style="width: 360px; height: 200px;">
+<form>
+  <div *ngIf="!showCountdown" class="form-group">
+    <label for="minuteInput">Minutes: </label>
+    <input
+      [(ngModel)]="inputToChild"
+      class="form-control"
+      id="minuteInput"
+      name="minutes"
+      type="number"
+      placeholder="Enter minutes..."
+    >
+  </div>
 
-<app-counter *ngIf="showCountdown" [minutes]="inputToChild"></app-counter>
+
+  <button
+    type="submit"
+    class="btn btn-info"
+    (click)="startCounter()"
+  >
+    {{showCountdown ? "<= back" : "Show Timer"}}
+  </button>
+  </form>
+
+  <app-counter
+    *ngIf="showCountdown"
+    [minutes]="inputToChild"
+  ></app-counter>
+</div>

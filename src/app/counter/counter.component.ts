@@ -12,9 +12,10 @@ export class CounterComponent implements OnInit {
   totalSeconds: number = 60;
   secondsRemaining: number;
   interval: any;
+  percentage: number;
 
   startButtonDisable = false;
-  pauseButtonDisable = true;
+  stopButtonDisable = true;
   resetButtonDisable = true;
 
   HH = 0;
@@ -22,8 +23,8 @@ export class CounterComponent implements OnInit {
   SS = 0;
 
   @Input() set minutes(value: number) {
-    this.totalSeconds = 60 * value;
-    this.secondsRemaining = 60 * value;
+    this.totalSeconds = Math.floor(60 * value);
+    this.secondsRemaining = Math.floor(60 * value);
     this.calculateTimeFromSeconds(this.secondsRemaining);
   }
 
@@ -33,12 +34,13 @@ export class CounterComponent implements OnInit {
     this.HH = Math.floor(seconds / 3600) ?? 0;
     this.MM = Math.floor(seconds % 3600 / 60) ?? 0;
     this.SS = Math.floor(seconds % 3600 % 60) ?? 0;
+    this.percentage = (this.secondsRemaining / this.totalSeconds) * 100;
   }
 
   ngOnInit(): void {
   }
 
-  pauseCounter() {
+  stopCounter() {
     this.setButtonStatuses(false, true, false);
     clearInterval(this.interval);
   }
@@ -48,10 +50,11 @@ export class CounterComponent implements OnInit {
     this.interval = setInterval(() => {
         this.secondsRemaining--;
         this.calculateTimeFromSeconds(this.secondsRemaining);
-        if (this.secondsRemaining == 0) {
-            this.setButtonStatuses(false, false, true);
-            clearInterval(this.interval);
-            alert("Timer Completed!")
+        if (this.secondsRemaining == -1) {
+          clearInterval(this.interval);
+          alert("Timer Completed!")
+          this.setButtonStatuses(true, true, false);
+          this.calculateTimeFromSeconds(0);
         }
     },1000)
   }
@@ -63,9 +66,9 @@ export class CounterComponent implements OnInit {
     this.calculateTimeFromSeconds(this.totalSeconds);
   }
 
-  setButtonStatuses(start: boolean, pause: boolean, reset: boolean){
+  setButtonStatuses(start: boolean, stop: boolean, reset: boolean){
     this.startButtonDisable = start;
-    this.pauseButtonDisable = pause;
+    this.stopButtonDisable = stop;
     this.resetButtonDisable = reset;
   }
 }
